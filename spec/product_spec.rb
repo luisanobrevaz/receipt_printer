@@ -49,6 +49,14 @@ RSpec.describe Product do
         expect(product.total_taxes).to eq(7.15)
       end
     end
+
+    context 'when price is round' do
+      let(:item) { '1 imported bottle of perfume at 10' }
+
+      it 'returns the total_taxes' do
+        expect(product.total_taxes).to eq(1.50)
+      end
+    end
   end
 
   describe 'total_price' do

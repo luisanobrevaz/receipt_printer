@@ -24,7 +24,7 @@ class Product
   private
 
   def unit_taxes
-    (taxes_perc * base_price * 20).ceil.to_f / 20
+    (taxes_perc.round(2) * base_price * 20).ceil.to_f / 20
   end
 
   def calculate_taxes
