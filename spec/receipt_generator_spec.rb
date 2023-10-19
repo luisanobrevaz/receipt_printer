@@ -1,6 +1,6 @@
-require './receipt_printer'
+require './receipt_generator'
 
-RSpec.describe ReceiptPrinter do
+RSpec.describe ReceiptGenerator do
   describe 'generate receipt' do
     let(:receipt_printer) { described_class.new }
     let(:items) do
@@ -53,6 +53,21 @@ RSpec.describe ReceiptPrinter do
       end
 
       it_behaves_like 'printer'
+    end
+  end
+
+  describe 'parse_items' do
+    let(:receipt_printer) { described_class.new }
+    let(:file_path) { 'spec/support/fixtures/example_input.txt' }
+    let(:items_list) do
+      ['2 book at 12.49',
+       '1 music CD at 14.99',
+       '1 chocolate bar at 0.85']
+    end
+
+    it 'prints the receipt' do
+      expect(receipt_printer.parse_items(file_path))
+        .to eq(items_list)
     end
   end
 end
