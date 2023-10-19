@@ -35,7 +35,8 @@ class Product
   end
 
   def free_base_tax
-    return true if category == 'books' || category == 'food' || category == 'medical'
+    return true if category == 'books' || category == 'food' ||
+                   category == 'medical'
 
     false
   end
