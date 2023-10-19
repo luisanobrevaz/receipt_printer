@@ -34,4 +34,36 @@ RSpec.describe Product do
       end
     end
   end
+
+  describe 'total_taxes' do
+    let(:item) { '2 book at 12.49' }
+
+    it 'returns the total_taxes' do
+      expect(product.total_taxes).to eq(0)
+    end
+
+    context 'when product is imported' do
+      let(:item) { '1 imported bottle of perfume at 47.50' }
+
+      it 'returns the total_taxes' do
+        expect(product.total_taxes).to eq(7.15)
+      end
+    end
+  end
+
+  describe 'total_price' do
+    let(:item) { '2 book at 12.49' }
+
+    it 'returns the total_price' do
+      expect(product.total_price).to eq(24.98)
+    end
+
+    context 'when product is imported' do
+      let(:item) { '1 imported bottle of perfume at 47.50' }
+
+      it 'returns the total_taxes' do
+        expect(product.total_price).to eq(54.65)
+      end
+    end
+  end
 end

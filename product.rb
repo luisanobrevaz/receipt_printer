@@ -11,7 +11,21 @@ class Product
     @taxes_perc =  calculate_taxes
   end
 
+  def total_taxes
+    (unit_taxes * quantity).round(2)
+  end
+
+  def total_price
+    final_price = (base_price + unit_taxes)
+
+    (final_price * quantity).round(2)
+  end
+
   private
+
+  def unit_taxes
+    (taxes_perc * base_price * 20).ceil.to_f / 20
+  end
 
   def calculate_taxes
     base_tax = free_base_tax ? 0 : 0.1
