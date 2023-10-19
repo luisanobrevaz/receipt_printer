@@ -18,11 +18,19 @@ RSpec.describe Product do
       expect(product.base_price).to eq(12.49)
     end
 
+    it 'returns the taxes_perc' do
+      expect(product.taxes_perc).to eq(0)
+    end
+
     context 'when product is imported' do
       let(:item) { '1 imported bottle of perfume at 47.50' }
 
       it 'returns the complete name' do
         expect(product.name).to eq('imported bottle of perfume')
+      end
+
+      it 'returns the taxes_perc' do
+        expect(product.taxes_perc.round(2)).to eq(0.15)
       end
     end
   end
